@@ -421,5 +421,9 @@
 		</File>
 	</Files>
 	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="GLoggly.rc"
+		/>
 	</Globals>
 </VisualStudioProject>

@@ -18,6 +18,7 @@
 IMPLEMENT_DYNCREATE(CGLogglyView, CFormView)
 
 BEGIN_MESSAGE_MAP(CGLogglyView, CFormView)
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 // CGLogglyView construction/destruction
@@ -52,7 +53,6 @@ void CGLogglyView::OnInitialUpdate()
 	CFormView::OnInitialUpdate();
 	GetParentFrame()->RecalcLayout();
 	ResizeParentToFit();
-
 }
 
 void CGLogglyView::OnRButtonUp(UINT nFlags, CPoint point)
@@ -66,7 +66,14 @@ void CGLogglyView::OnContextMenu(CWnd* pWnd, CPoint point)
 	theApp.GetContextMenuManager()->ShowPopupMenu(IDR_POPUP_EDIT, point.x, point.y, this, TRUE);
 }
 
+void CGLogglyView::OnSize(UINT nType, int cx, int cy)
+{
+	CFormView::OnSize(nType, cx, cy);
 
+	// TODO: Add your message handler code here	
+	if(IsWindow(c_Graph.GetSafeHwnd()))//please check chart control activation.
+		c_Graph.SetWindowPos(NULL, 0, 0, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
+}
 // CGLogglyView diagnostics
 
 #ifdef _DEBUG
