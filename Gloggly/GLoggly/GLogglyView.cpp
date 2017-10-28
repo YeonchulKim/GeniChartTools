@@ -36,6 +36,7 @@ CGLogglyView::~CGLogglyView()
 void CGLogglyView::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_MAIN_GRAPH, c_Graph);
 }
 
 BOOL CGLogglyView::PreCreateWindow(CREATESTRUCT& cs)

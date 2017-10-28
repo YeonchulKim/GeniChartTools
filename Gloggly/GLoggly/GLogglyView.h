@@ -5,7 +5,7 @@
 
 #pragma once
 
-
+#include "NiGraph.h"
 class CGLogglyView : public CFormView
 {
 protected: // create from serialization only
@@ -39,6 +39,7 @@ public:
 
 protected:
 
+	NI::CNiGraph c_Graph;
 // Generated message map functions
 protected:
 	afx_msg void OnFilePrintPreview();
