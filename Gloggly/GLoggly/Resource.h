@@ -3,6 +3,7 @@
 // Used by GLoggly.rc
 //
 #define IDD_ABOUTBOX				100
+#define IDD_GLOGGLY_FORM			101
 #define IDP_OLE_INIT_FAILED			100
 #define IDR_POPUP_EDIT				119
 #define ID_STATUSBAR_PANE1			120

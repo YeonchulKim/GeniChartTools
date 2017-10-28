@@ -47,8 +47,8 @@ BEGIN
 	"#pragma code_page(1252)\r\n"
 	"#include ""res\\GLoggly.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
 	"#include ""afxres.rc""  	// Standard components\r\n"
-	"#include ""afxprint.rc""	// printing/print preview resources\r\n"
 	"#if !defined(_AFXDLL)\r\n"
+	"#include ""afxprint.rc""		// printing/print preview resources\r\n"
 	"#include ""afxribbon.rc""		// MFC ribbon and control bar resources\r\n"
 	"#endif\r\n"
 	"#endif\r\n"
@@ -184,10 +184,6 @@ BEGIN
 		MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
 		MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
 		MENUITEM SEPARATOR
-		MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
-		MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
-		MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
-		MENUITEM SEPARATOR
 		MENUITEM "Recent File",                 ID_FILE_MRU_FILE1,GRAYED
 		MENUITEM SEPARATOR
 		MENUITEM "E&xit",                       ID_APP_EXIT
@@ -298,7 +294,6 @@ BEGIN
 	"N",            ID_FILE_NEW,            VIRTKEY,CONTROL
 	"O",            ID_FILE_OPEN,           VIRTKEY,CONTROL
 	"S",            ID_FILE_SAVE,           VIRTKEY,CONTROL
-	"P",            ID_FILE_PRINT,          VIRTKEY,CONTROL
 	"Z",            ID_EDIT_UNDO,           VIRTKEY,CONTROL
 	"X",            ID_EDIT_CUT,            VIRTKEY,CONTROL
 	"C",            ID_EDIT_COPY,           VIRTKEY,CONTROL
@@ -330,6 +325,13 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
 END
 
+IDD_GLOGGLY_FORM	DIALOGEX  0, 0, 320, 200
+STYLE DS_SHELLFONT | WS_CHILD
+FONT 8, "MS Shell Dlg"
+BEGIN
+	LTEXT	"TODO: Place form controls on this dialog.",IDC_STATIC,24,42,
+		280,8
+END
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -385,6 +387,13 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 55
     END
+    IDD_GLOGGLY_FORM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 313
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -401,7 +410,7 @@ STRINGTABLE
 BEGIN
 // Non-mac-targeting apps remove the two extra substrings
   // has a file suffix
-	IDR_MAINFRAME           "GLoggly\n\nGLoggly\nGLoggly Files (*.csv)\n.* \nGLoggly.Document\nGLoggly.Document"
+	IDR_MAINFRAME           "GLoggly\n\nGLoggly\nGLoggly Files (*.csv)\n.csv\nGLoggly.Document\nGLoggly.Document"
 
 END
 STRINGTABLE
@@ -425,11 +434,6 @@ BEGIN
 	ID_FILE_CLOSE           "Close the active document\nClose"
 	ID_FILE_SAVE            "Save the active document\nSave"
 	ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
-	ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
-	ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
-	ID_FILE_PRINT_DIRECT    "Print the active document using current options\nQuick Print"
-	ID_FILE_PRINT           "Print the active document\nPrint"
-	ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
 	ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
 	ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
 	ID_FILE_MRU_FILE1       "Open this document"
@@ -476,7 +480,6 @@ BEGIN
 	AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
 	AFX_IDS_SCRESTORE       "Restore the window to normal size"
 	AFX_IDS_SCTASKLIST      "Activate Task List"
-	AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
 END
 
 
@@ -513,8 +516,8 @@ LANGUAGE 9, 1
 #pragma code_page(1252)
 #include "res\\GLoggly.rc2"  // non-Microsoft Visual C++ edited resources
 #include "afxres.rc"  	// Standard components
-#include "afxprint.rc"  // printing/print preview resources
 #if !defined(_AFXDLL)
+#include "afxprint.rc"		// printing/print preview resources
 #include "afxribbon.rc"		// MFC ribbon and control bar resources
 #endif
 #endif

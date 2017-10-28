@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="GLoggly"
-	ProjectGUID="{11959748-CC99-4F9D-AECE-12E2F9CC1560}"
+	ProjectGUID="{9031F097-6A73-40E6-8602-2338FA4B22A6}"
 	RootNamespace="GLoggly"
 	Keyword="MFCProj"
 	TargetFrameworkVersion="196613"

@@ -70,11 +70,11 @@ GLogglyDoc.h, GLogglyDoc.cpp - the document
     add your special document data and to implement file saving and loading
     (via CGLogglyDoc::Serialize).
     The Document will have the following strings:
-        File extension:      * 
+        File extension:      csv
         File type ID:        GLoggly.Document
         Main frame caption:  GLoggly
         Doc type name:       GLoggly
-        Filter name:         GLoggly Files (*.*)
+        Filter name:         GLoggly Files (*.csv)
         File new short name: GLoggly
         File type long name: GLoggly.Document
 
@@ -92,10 +92,6 @@ Other Features:
 
 ActiveX Controls
     The application includes support to use ActiveX controls.
-
-Printing and Print Preview support
-    The application wizard has generated code to handle the print, print setup, and print preview
-    commands by calling member functions in the CView class from the MFC library.
 
 /////////////////////////////////////////////////////////////////////////////
 

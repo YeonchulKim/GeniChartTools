@@ -15,18 +15,15 @@
 
 // CGLogglyView
 
-IMPLEMENT_DYNCREATE(CGLogglyView, CView)
+IMPLEMENT_DYNCREATE(CGLogglyView, CFormView)
 
-BEGIN_MESSAGE_MAP(CGLogglyView, CView)
-	// Standard printing commands
-	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CGLogglyView::OnFilePrintPreview)
+BEGIN_MESSAGE_MAP(CGLogglyView, CFormView)
 END_MESSAGE_MAP()
 
 // CGLogglyView construction/destruction
 
 CGLogglyView::CGLogglyView()
+	: CFormView(CGLogglyView::IDD)
 {
 	// TODO: add construction code here
 
@@ -36,49 +33,25 @@ CGLogglyView::~CGLogglyView()
 {
 }
 
+void CGLogglyView::DoDataExchange(CDataExchange* pDX)
+{
+	CFormView::DoDataExchange(pDX);
+}
+
 BOOL CGLogglyView::PreCreateWindow(CREATESTRUCT& cs)
 {
 	// TODO: Modify the Window class or styles here by modifying
 	//  the CREATESTRUCT cs
 
-	return CView::PreCreateWindow(cs);
+	return CFormView::PreCreateWindow(cs);
 }
 
-// CGLogglyView drawing
-
-void CGLogglyView::OnDraw(CDC* /*pDC*/)
+void CGLogglyView::OnInitialUpdate()
 {
-	CGLogglyDoc* pDoc = GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;
+	CFormView::OnInitialUpdate();
+	GetParentFrame()->RecalcLayout();
+	ResizeParentToFit();
 
-	// TODO: add draw code for native data here
-}
-
-
-// CGLogglyView printing
-
-
-void CGLogglyView::OnFilePrintPreview()
-{
-	AFXPrintPreview(this);
-}
-
-BOOL CGLogglyView::OnPreparePrinting(CPrintInfo* pInfo)
-{
-	// default preparation
-	return DoPreparePrinting(pInfo);
-}
-
-void CGLogglyView::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
-{
-	// TODO: add extra initialization before printing
-}
-
-void CGLogglyView::OnEndPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
-{
-	// TODO: add cleanup after printing
 }
 
 void CGLogglyView::OnRButtonUp(UINT nFlags, CPoint point)
@@ -98,12 +71,12 @@ void CGLogglyView::OnContextMenu(CWnd* pWnd, CPoint point)
 #ifdef _DEBUG
 void CGLogglyView::AssertValid() const
 {
-	CView::AssertValid();
+	CFormView::AssertValid();
 }
 
 void CGLogglyView::Dump(CDumpContext& dc) const
 {
-	CView::Dump(dc);
+	CFormView::Dump(dc);
 }
 
 CGLogglyDoc* CGLogglyView::GetDocument() const // non-debug version is inline

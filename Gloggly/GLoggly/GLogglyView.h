@@ -6,11 +6,14 @@
 #pragma once
 
 
-class CGLogglyView : public CView
+class CGLogglyView : public CFormView
 {
 protected: // create from serialization only
 	CGLogglyView();
 	DECLARE_DYNCREATE(CGLogglyView)
+
+public:
+	enum{ IDD = IDD_GLOGGLY_FORM };
 
 // Attributes
 public:
@@ -21,12 +24,10 @@ public:
 
 // Overrides
 public:
-	virtual void OnDraw(CDC* pDC);  // overridden to draw this view
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 protected:
-	virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
-	virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
-	virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual void OnInitialUpdate(); // called first time after construct
 
 // Implementation
 public:
