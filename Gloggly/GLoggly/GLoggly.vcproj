@@ -207,11 +207,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\HeaderInfo.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MainFrm.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\OutputWnd.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ProcessData.cpp"
 				>
 			</File>
 			<File
@@ -269,11 +277,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\HeaderInfo.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MainFrm.h"
 				>
 			</File>
 			<File
 				RelativePath=".\OutputWnd.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ProcessData.h"
 				>
 			</File>
 			<File

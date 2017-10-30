@@ -34,6 +34,7 @@ public:
 	virtual void Dump(CDumpContext& dc) const;
 #endif
 
+	COutputWnd* GetOutputWnd(){return &m_wndOutput;}
 protected:  // control bar embedded members
 	CMFCMenuBar       m_wndMenuBar;
 	CMFCToolBar       m_wndToolBar;

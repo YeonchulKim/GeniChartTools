@@ -74,9 +74,9 @@ int COutputWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_wndTabs.AddTab(&m_wndOutputFind, strTabName, (UINT)2);
 
 	// Fill output tabs with some dummy text (nothing magic here)
-	FillBuildWindow();
+	/*FillBuildWindow();
 	FillDebugWindow();
-	FillFindWindow();
+	FillFindWindow();*/
 
 	return 0;
 }
@@ -108,25 +108,25 @@ void COutputWnd::AdjustHorzScroll(CListBox& wndListBox)
 	dc.SelectObject(pOldFont);
 }
 
-void COutputWnd::FillBuildWindow()
+void COutputWnd::FillBuildWindow(std::string msg)
 {
-	m_wndOutputBuild.AddString(_T("Build output is being displayed here."));
-	m_wndOutputBuild.AddString(_T("The output is being displayed in rows of a list view"));
-	m_wndOutputBuild.AddString(_T("but you can change the way it is displayed as you wish..."));
+	m_wndOutputBuild.AddString(msg.c_str());
+	//m_wndOutputBuild.AddString(_T("The output is being displayed in rows of a list view"));
+	//m_wndOutputBuild.AddString(_T("but you can change the way it is displayed as you wish..."));
 }
 
-void COutputWnd::FillDebugWindow()
+void COutputWnd::FillDebugWindow(std::string msg)
 {
-	m_wndOutputDebug.AddString(_T("Debug output is being displayed here."));
-	m_wndOutputDebug.AddString(_T("The output is being displayed in rows of a list view"));
-	m_wndOutputDebug.AddString(_T("but you can change the way it is displayed as you wish..."));
+	m_wndOutputDebug.AddString(msg.c_str());
+	//m_wndOutputDebug.AddString(_T("The output is being displayed in rows of a list view"));
+	//m_wndOutputDebug.AddString(_T("but you can change the way it is displayed as you wish..."));
 }
 
-void COutputWnd::FillFindWindow()
+void COutputWnd::FillFindWindow(std::string msg)
 {
-	m_wndOutputFind.AddString(_T("Find output is being displayed here."));
-	m_wndOutputFind.AddString(_T("The output is being displayed in rows of a list view"));
-	m_wndOutputFind.AddString(_T("but you can change the way it is displayed as you wish..."));
+	m_wndOutputFind.AddString(msg.c_str());
+	//m_wndOutputFind.AddString(_T("The output is being displayed in rows of a list view"));
+	//m_wndOutputFind.AddString(_T("but you can change the way it is displayed as you wish..."));
 }
 
 /////////////////////////////////////////////////////////////////////////////

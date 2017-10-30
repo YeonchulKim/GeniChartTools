@@ -39,10 +39,10 @@ protected:
 	COutputList m_wndOutputDebug;
 	COutputList m_wndOutputFind;
 
-protected:
-	void FillBuildWindow();
-	void FillDebugWindow();
-	void FillFindWindow();
+public:
+	void FillBuildWindow(std::string msg);
+	void FillDebugWindow(std::string msg);
+	void FillFindWindow(std::string msg);
 
 	void AdjustHorzScroll(CListBox& wndListBox);
 
