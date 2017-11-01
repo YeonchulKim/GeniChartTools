@@ -87,8 +87,8 @@ public:
 		LAST
 	};
 public:
-	std::vector<std::vector<std::string>>* GetTables(void){return &tables;}
+	std::vector<std::vector<float>>* GetTables(void){return &tables;}
 private:
-	std::vector<std::vector<std::string>> tables;
+	std::vector<std::vector<float>> tables;
 	
 };

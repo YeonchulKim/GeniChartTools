@@ -145,9 +145,10 @@ void CGLogglyDoc::Parsing()
 	int header_row = CHeaderInfo::COUNT+1;
 	int rows = lines.size() - header_row;
 
-	std::vector<std::vector<std::string>> *pTable = m_pProcData->GetTables();
+	std::vector<std::vector<float>> *pTable = m_pProcData->GetTables();
 	pTable->clear();
-	pTable->assign(rows,std::vector<std::string>(CProcessData::LAST,""));
+	//pTable->assign(rows,std::vector<float>(CProcessData::LAST,0.0));
+	pTable->assign(CProcessData::LAST,std::vector<float>(rows,0.0));//[74][total lines]
 
 	for(size_t i=13 ; i != lines.size(); i++)
 	{
@@ -156,7 +157,13 @@ void CGLogglyDoc::Parsing()
 
 		for ( int j = CProcessData::FIRST; j != CProcessData::LAST;j++ )
 		{
-		  (*pTable)[i-header_row][j] = data[j];
+			//(*pTable)[i-header_row][j] = static_cast<float>(atof(data[j].c_str()));
+			if(j==CProcessData::FIRST)
+			{
+				(*pTable)[j][i-header_row] = static_cast<float>(5.0*i);//
+			}
+			else
+				(*pTable)[j][i-header_row] = static_cast<float>(atof(data[j].c_str()));//
 		}
 		data.clear();
 	}

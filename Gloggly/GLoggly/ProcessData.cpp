@@ -3,6 +3,7 @@
 
 CProcessData::CProcessData(void)
 {
+	tables.clear();
 }
 CProcessData::~CProcessData(void)
 {

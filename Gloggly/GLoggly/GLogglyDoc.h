@@ -21,7 +21,7 @@ public:
 // Operations
 public:
 	char * const GetBuffer(void){return m_pBuf;}
-	
+	CProcessData * const GetProcessData(){return m_pProcData;}
 
 private:
 	void Parsing();

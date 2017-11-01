@@ -7,6 +7,9 @@
 
 #include "GLogglyDoc.h"
 #include "GLogglyView.h"
+#include "ProcessData.h"
+
+#include <algorithm>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -100,31 +103,35 @@ CGLogglyDoc* CGLogglyView::GetDocument() const // non-debug version is inline
 void CGLogglyView::OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/)
 {
 	// TODO: Add your specialized code here and/or call the base class
+	std::vector<std::vector<float>> * const pTables = GetDocument()->GetProcessData()->GetTables();
 	if(GetDocument()->GetBuffer() != NULL)
-	{
-		//CNiReal32Vector set(GetDocument()->GetTimes()->size());
-
-		//float *pData = 0; 
-		
-
-		////Display
-		/*c_Graph.ClearData();
+	{		
+		c_Graph.ClearData();
 		c_Graph.GetPlots().RemoveAll();
+		
+		float *pData = NULL;
+		
+		for(int i= 0 ; i != 74 ; i++)
+		{	
+			int plot = i+1;
+			std::vector<float> tmp = (*pTables)[i];
+			const int sz = tmp.size();
+			CNiReal32Vector set(sz);
 
-		float *pData = &GetDocument()->GetDiffPrs()->at(0);
-		::CopyMemory( (float*)set,pData, sizeof(float) * GetDocument()->GetTimes()->size());		
-		c_Graph.GetPlots().Add();
-		c_Graph.GetPlots().Item(1).SetAutoScale(TRUE);
-		c_Graph.GetPlots().Item(1).PlotY(set, 0, 15);
-		c_Graph.GetPlots().Item(1).SetLineColor(CNiColor(RGB(255,0,0)));
+			pData = &tmp[0]; 
+			::CopyMemory( (float*)set,pData,sizeof(float) * sz);		
+			c_Graph.GetPlots().Add();
+			c_Graph.GetPlots().Item(plot).SetAutoScale(TRUE);
 
+			/*std::vector<float>::iterator max,min;			
+			max = std::max_element(tmp.begin(),tmp.end());
+			min = std::min_element(tmp.begin(),tmp.end());
+			TRACE("Min=%lf / Max=%lf \n",*min,*max);*/
 
-		*pData = GetDocument()->GetShlPrs()->at(0);
-		::CopyMemory( (float*)set,pData, sizeof(float) * GetDocument()->GetTimes()->size());
-		c_Graph.GetPlots().Add();
-		c_Graph.GetPlots().Item(2).SetAutoScale(TRUE);
-		c_Graph.GetPlots().Item(2).PlotY(set, 0, 400);
-		c_Graph.GetPlots().Item(2).SetLineColor(CNiColor(RGB(0,255,200)));*/
+			c_Graph.GetPlots().Item(plot).PlotY(set, 0, 5);	
+			c_Graph.GetPlots().Item(plot).SetLineColor(CNiColor(RGB(10+i*5,i*3,i*7)));
 
+		}
 	}
+	
 }
